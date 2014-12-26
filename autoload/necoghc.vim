@@ -220,10 +220,7 @@ endfunction "}}}
 
 function! s:ghc_mod_caching_browse(mod) "{{{
   let l:dict = {}
-  let l:cmd = ['browse', '-o']
-  if get(g:, 'necoghc_enable_detailed_browse')
-    let l:cmd += ['-d']
-  endif
+  let l:cmd = ['browse', '-o', '-d']
   let l:cmd += [a:mod]
   for l:line in s:ghc_mod(l:cmd)
     let l:m = matchlist(l:line, '^\(class\|data\|type\|newtype\) \(\S\+\)\( .\+\)\?$')
@@ -374,15 +371,7 @@ function! s:synname(...) "{{{
 endfunction "}}}
 
 function! s:system(list) "{{{
-  if !exists('s:exists_vimproc')
-    try
-      call vimproc#version()
-      let s:exists_vimproc = 1
-    catch
-      let s:exists_vimproc = 0
-    endtry
-  endif
-  return s:exists_vimproc ? vimproc#system(a:list) : system(join(a:list, ' '))
+  return system(join(a:list, ' '))
 endfunction "}}}
 
 " vim: ts=2 sw=2 sts=2 foldmethod=marker
