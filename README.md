@@ -1,6 +1,6 @@
 # neocomplcache-ghc (neco-ghc)
 
-A completion plugin for Haskell, using ghc-mod
+A completion plugin for Haskell, using ghc-mod.
 
 ## What is neco-ghc
 
@@ -20,6 +20,9 @@ This plugin supports the following completion.
 neco-ghc was originally implemented by @eagletmt on July 25, 2010, and then
 ujihisa added some new features.
 
+Updated to remove neocomplete/neocomplcache/ycm ~~bullshit~~er, support,
+and uses detailed browse as default.
+
 ## Install
 
 * Install ghc-mod package by `cabal install ghc-mod`
@@ -28,7 +31,7 @@ ujihisa added some new features.
 ## Usage
 
 neco-ghc provides `necoghc#omnifunc` for omni-completion.
-I recommend adding the following in your ~/.vim/ftplugin/haskell.vim.
+I recommend adding the following in your ~/.vim/after/ftplugin/haskell.vim.
 
 ```vim
 setlocal omnifunc=necoghc#omnifunc
@@ -37,46 +40,8 @@ setlocal omnifunc=necoghc#omnifunc
 See `:help compl-omni` for details on omni-completion.
 
 ### Completion engines
-This plugin can be used as a source of
-[neocomplete.vim](https://github.com/Shougo/neocomplete.vim) or
-[neocomplcache.vim](https://github.com/Shougo/neocomplcache.vim).
+This plugin can be used as a source of [VimCompletesMe](github.com/ajh17/VimCompletesMe)
 You can enjoy auto-completions without any specific configuration.
-
-This plugin also should work with [YouCompleteMe](https://github.com/Valloric/YouCompleteMe).
-To enable auto-completions, you have to add the following setting.
-
-```vim
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
-```
-
-## Options
-### `g:necoghc_enable_detailed_browse`
-Default: 0
-
-Show detailed information (type) of symbols.
-You can enable it by adding `let g:necoghc_enable_detailed_browse = 1` in your vimrc.
-While it is quite useful, it would take longer boot time.
-
-This feature was introduced in ghc-mod 1.11.5.
-
-![](http://cache.gyazo.com/f3d2c097475021615581822eee8cb6fd.png)
-
-### `g:necoghc_debug`
-Default: 0
-
-Show error message if ghc-mod command fails.
-Usually it would be noisy because `ghc-mod browse Your.Project.Module` always fails.
-Use this flag only if you have some trouble.
-
-## Troubleshoot
-
-If for some reason the neco-ghc plugin is not being added to neocomplcache,
-check that the $PATH variable in vim contains the path to your .cabal/bin
-directory.
-
-If not, add in your .vimrc:
-
-`let $PATH = $PATH . ':' . expand("~/.cabal/bin")`
 
 ## License
 
