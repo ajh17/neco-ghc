@@ -1,32 +1,36 @@
-# neocomplcache-ghc (neco-ghc)
+# neco-ghc
 
 A completion plugin for Haskell, using ghc-mod.
 
 neco-ghc was originally implemented by @eagletmt on July 25, 2010, and then
 ujihisa added some new features.
 
-Updated to remove neocomplete/neocomplcache/ycm ~~bullshit~~ er, support,
+Note: Updated to remove neocomplete/neocomplcache/ycm ~~bullshit~~ er, support,
 and uses detailed browse as default on Dec 26, 2014
 
 ## Install
 
 * Install ghc-mod package by `cabal install ghc-mod`
-* Unarchive neco-ghc and put it into a dir of your &rtp.
+
+AND
+
+If you don't have a preferred installation method, I recommend installing
+pathogen.vim, and then simply copy and paste:
+
+`cd ~/.vim/bundle && git clone git://github.com/ajh17/neco-ghc.git`
 
 ## Usage
-
-neco-ghc provides `necoghc#omnifunc` for omni-completion.
-I recommend adding the following in your ~/.vim/after/ftplugin/haskell.vim.
+Simply set the following variables to `completefunc` or `omnifunc`:
 
 ```vim
 setlocal omnifunc=necoghc#omnifunc
 ```
+This plugin can also be used with [VimCompletesMe](https://github.com/ajh17/VimCompletesMe).
+Simply set the `b:vcm_tab_complete` variable to "omni":
 
-See `:help compl-omni` for details on omni-completion.
-
-### Completion engines
-This plugin can be used as a source of [VimCompletesMe](github.com/ajh17/VimCompletesMe)
-You can enjoy auto-completions without any specific configuration.
+```vim
+let b:vcm_tab_complete = "omni"
+```
 
 ## License
 
